@@ -23,6 +23,7 @@ import { AppConfigProvider } from '@state';
 import createRoutes from './routes';
 import appInit from './appInit.js';
 import OpenIdConnectRoutes from './utils/OpenIdConnectRoutes';
+import InitTestChart from "./components/Charts/InitTestChart";
 
 let commandsManager: CommandsManager,
   extensionManager: ExtensionManager,
@@ -110,6 +111,9 @@ function App({ config, defaultExtensions, defaultModes }) {
       <BrowserRouter basename={routerBasename}>
         {authRoutes}
         {appRoutes}
+        {
+          <InitTestChart/>
+        }
       </BrowserRouter>
     </CombinedProviders>
   );
