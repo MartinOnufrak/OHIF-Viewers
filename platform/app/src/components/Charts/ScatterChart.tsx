@@ -93,9 +93,6 @@ const ScatterChart: React.FC = () => {
             },
             feature: {
                 dataZoom: {},
-                dataView: {
-                    readOnly: true
-                },
                 saveAsImage: {}
             }
         },
