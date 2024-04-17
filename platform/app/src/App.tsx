@@ -24,6 +24,7 @@ import createRoutes from './routes';
 import appInit from './appInit.js';
 import OpenIdConnectRoutes from './utils/OpenIdConnectRoutes';
 import InitTestChart from "./components/Charts/InitTestChart";
+import ScatterChart from "./components/Charts/ScatterChart";
 
 let commandsManager: CommandsManager,
   extensionManager: ExtensionManager,
@@ -112,7 +113,7 @@ function App({ config, defaultExtensions, defaultModes }) {
         {authRoutes}
         {appRoutes}
         {
-          <InitTestChart/>
+          <ScatterChart/>
         }
       </BrowserRouter>
     </CombinedProviders>
