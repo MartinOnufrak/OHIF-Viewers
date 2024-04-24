@@ -61,6 +61,7 @@ function WorkList({
   // ~ Filters
   const searchParams = useSearchParams();
   const navigate = useNavigate();
+
   const STUDIES_LIMIT = 101;
   const queryFilterValues = _getQueryFilterValues(searchParams);
   const [sessionQueryFilterValues, updateSessionQueryFilterValues] = useSessionStorage({
@@ -349,7 +350,24 @@ function WorkList({
               : []
           }
         >
+
           <div className="flex flex-row gap-2">
+            <Button
+                type={ButtonEnums.type.primary}
+                size={ButtonEnums.size.medium}
+                disabled={false}
+                startIconTooltip={null}
+                startIcon={
+                  <Icon
+                      className="!h-[20px] !w-[20px] text-black"
+                      name={'launch-arrow'}
+                  />
+                } // launch-arrow | launch-info
+                onClick={() => {navigate('/doctor-helper', { replace: true , state: {studyInstanceUid: studyInstanceUid}});}}
+                className={'text-[13px]'}
+            >
+              {"Doctor helper"}
+            </Button>
             {(appConfig.groupEnabledModesFirst
               ? appConfig.loadedModes.sort((a, b) => {
                   const isValidA = a.isValidMode({

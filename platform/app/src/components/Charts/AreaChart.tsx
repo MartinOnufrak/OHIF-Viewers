@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import ReactECharts from "echarts-for-react";
-import {getAllData, getPacientData} from "../../utils/apiConnectors";
+import {getAllData, getPatientData} from "../../utils/apiConnectors";
 import {MultipleRecords} from "../../types/apiTypes";
 import {
     ascendingSort,
@@ -11,12 +11,12 @@ import {
     rightShift, SILVER, SILVER_OPAQUE
 } from "../../utils/chartsUtils";
 
-function formatData(data: MultipleRecords, pacientRvef: number) {
+function formatData(data: MultipleRecords, patientRvef: number) {
     const size = Math.min(data.RVEDV.length, data.RVESV.length);
     const healthy = [];
     const insuffiecient = [];
     const excessive = [];
-    let belowPacientCounter = 0;
+    let belowPatientCounter = 0;
     let whole = [];
     for (let i = 0; i < size; i++) {
         const rvef = data.RVEF[i];
@@ -28,10 +28,10 @@ function formatData(data: MultipleRecords, pacientRvef: number) {
     let seenGreater = false;
     for (let i = 0; i < size; i++) {
         const rvef = whole[i];
-        if (!seenGreater && rvef > pacientRvef) {
+        if (!seenGreater && rvef > patientRvef) {
             newWhole.push(0);
             seenGreater = true;
-            belowPacientCounter = i;
+            belowPatientCounter = i;
         }
 
         newWhole.push(rvef);
@@ -62,19 +62,21 @@ function formatData(data: MultipleRecords, pacientRvef: number) {
         insuffiecient: insuffiecient,
         healthy: rightShift(healthy, insuffiecient.length),
         excessive: rightShift(excessive, insuffiecient.length + healthy.length),
-        pacient: rightShift([pacientRvef], belowPacientCounter)
+        patient: rightShift([patientRvef], belowPatientCounter)
     };
 }
 
-const AreaChart: React.FC = () => {
-    const [parsedData, setParsedData] = useState({'insuffiecient': [], 'healthy': [], 'excessive': [], 'pacient': []});
+// @ts-ignore
+const AreaChart: React.FC = ({studyInstanceUid}) => {
+    const [parsedData, setParsedData] = useState({'insuffiecient': [], 'healthy': [], 'excessive': [], 'patient': []});
     const [dataSize, setDataSize] = useState(0);
-
     // @ts-ignore
     useEffect(async () => {
         const allData = await getAllData();
-        setParsedData(formatData(allData, (await getPacientData()).RVEF));
-        setDataSize(allData.RVEF.length);
+        if (allData !== null) {
+            setParsedData(formatData(allData, (await getPatientData(studyInstanceUid)).RVEF));
+            setDataSize(allData.RVEF.length);
+        }
     }, []);
     const options = {
         legend: {
@@ -169,7 +171,7 @@ const AreaChart: React.FC = () => {
             {
                 name: 'Pacient',
                 stack: 'DEFAULT',
-                data: parsedData.pacient,
+                data: parsedData.patient,
                 type: 'bar',
                 color: 'rgb(0, 100, 255)',
                 barWidth: '500%',

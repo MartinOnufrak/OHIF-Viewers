@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import ReactECharts from "echarts-for-react";
-import {getAllData, getPacientData} from "../../utils/apiConnectors";
+import {getAllData, getPatientData} from "../../utils/apiConnectors";
 import {MultipleRecords} from "../../types/apiTypes";
 import {DEFAULT_CHART_OPTIONS, isHealthy, RED, SILVER, SILVER_OPAQUE} from "../../utils/chartsUtils";
 
@@ -21,14 +21,18 @@ function formatData(data: MultipleRecords) {
 
     return { 'healthy': healthy, 'ill': ill };
 }
-const ScatterChart: React.FC = () => {
+// @ts-ignore
+const ScatterChart: React.FC = ({studyInstanceUid}) => {
     const [parsedData, setParsedData] = useState({'healthy': [], 'ill': []});
-    const [pacientData, setPacientData] = useState({'RVEDV': 0, 'RVESV': 0, 'RVEF': 0});
+    const [patientData, setPatientData] = useState({'RVEDV': 0, 'RVESV': 0, 'RVEF': 0});
 
     // @ts-ignore
     useEffect(async () => {
-        setParsedData(formatData(await getAllData()));
-        setPacientData(await getPacientData());
+        const allData = await getAllData();
+        const patientData = await getPatientData(studyInstanceUid);
+
+        if (allData !== null) setParsedData(formatData(allData));
+        if (patientData !== null) setPatientData(patientData);
     }, []);
     const options = {
         xAxis: {
@@ -131,7 +135,7 @@ const ScatterChart: React.FC = () => {
                     brushType: 'stroke',
                     scale: '3',
                 },
-                data: [[pacientData.RVEDV, pacientData.RVESV, pacientData.RVEF]]
+                data: [[patientData.RVEDV, patientData.RVESV, patientData.RVEF]]
             }
         ]
     };

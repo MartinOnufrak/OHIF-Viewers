@@ -1,9 +1,6 @@
-//import {MultipleRecords, SingleRecord} from "../types/apiTypes";
-
 import {MultipleRecords, SingleRecord} from "../types/apiTypes";
 
 export async function getAllData(): Promise<MultipleRecords> {
-    const errorValues = {RVEDV: [0], RVEF: [0], RVESV: [0]};
     return fetch('http://localhost:8000/getTest', { mode: 'cors', headers: {"Cross-Origin-Resource-Policy": "cross-origin"}})
         .then(async (response) => JSON.parse(await response.json()))
         .then((data) => {
@@ -11,19 +8,18 @@ export async function getAllData(): Promise<MultipleRecords> {
         })
         .catch((err) => {
             console.log(err.message);
-            return errorValues;
+            return null;
         });
 }
 
-export async function getPacientData(): Promise<SingleRecord>{
-    const errorValues = {RVEDV: 0, RVEF: 0, RVESV: 0};
-    return fetch('http://localhost:8000/getPatientData', { mode: 'cors', headers: {"Cross-Origin-Resource-Policy": "cross-origin"}})
+export async function getPatientData(studyInstanceUid): Promise<SingleRecord>{
+    return fetch('http://localhost:8000/getPatientData?studyInstanceUid=' + studyInstanceUid, { mode: 'cors', headers: {"Cross-Origin-Resource-Policy": "cross-origin"}})
         .then(async (response) => JSON.parse(await response.json()))
         .then((data) => {
             return data;
         })
         .catch((err) => {
             console.log(err.message);
-            return errorValues;
+            return null;
         });
 }

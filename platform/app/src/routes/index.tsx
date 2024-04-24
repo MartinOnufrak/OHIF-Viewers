@@ -12,6 +12,7 @@ import buildModeRoutes from './buildModeRoutes';
 import PrivateRoute from './PrivateRoute';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import DoctorHelper from "../components/DoctorHelper";
 
 const NotFoundServer = ({
   message = 'Unable to query for studies at this time. Check your data source configuration or network connection',
@@ -162,6 +163,7 @@ const createRoutes = ({
           />
         );
       })}
+      <Route path="/doctor-helper" element={<DoctorHelper />}/>
     </Routes>
   );
 };
