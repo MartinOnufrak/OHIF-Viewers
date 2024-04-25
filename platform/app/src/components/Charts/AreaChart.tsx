@@ -67,14 +67,14 @@ function formatData(data: MultipleRecords, patientRvef: number) {
 }
 
 // @ts-ignore
-const AreaChart: React.FC = ({studyInstanceUid}) => {
+const AreaChart: React.FC = ({mrn}) => {
     const [parsedData, setParsedData] = useState({'insuffiecient': [], 'healthy': [], 'excessive': [], 'patient': []});
     const [dataSize, setDataSize] = useState(0);
     // @ts-ignore
     useEffect(async () => {
         const allData = await getAllData();
         if (allData !== null) {
-            setParsedData(formatData(allData, (await getPatientData(studyInstanceUid)).RVEF));
+            setParsedData(formatData(allData, (await getPatientData(mrn)).RVEF));
             setDataSize(allData.RVEF.length);
         }
     }, []);

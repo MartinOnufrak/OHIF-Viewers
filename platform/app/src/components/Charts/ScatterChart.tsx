@@ -22,14 +22,14 @@ function formatData(data: MultipleRecords) {
     return { 'healthy': healthy, 'ill': ill };
 }
 // @ts-ignore
-const ScatterChart: React.FC = ({studyInstanceUid}) => {
+const ScatterChart: React.FC = ({mrn}) => {
     const [parsedData, setParsedData] = useState({'healthy': [], 'ill': []});
     const [patientData, setPatientData] = useState({'RVEDV': 0, 'RVESV': 0, 'RVEF': 0});
 
     // @ts-ignore
     useEffect(async () => {
         const allData = await getAllData();
-        const patientData = await getPatientData(studyInstanceUid);
+        const patientData = await getPatientData(mrn);
 
         if (allData !== null) setParsedData(formatData(allData));
         if (patientData !== null) setPatientData(patientData);

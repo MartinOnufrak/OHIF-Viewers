@@ -1,7 +1,7 @@
 import {MultipleRecords, SingleRecord} from "../types/apiTypes";
 
 export async function getAllData(): Promise<MultipleRecords> {
-    return fetch('http://localhost:8000/getTest', { mode: 'cors', headers: {"Cross-Origin-Resource-Policy": "cross-origin"}})
+    return fetch('http://localhost:8000/getRVData', { mode: 'cors', headers: {"Cross-Origin-Resource-Policy": "cross-origin"}})
         .then(async (response) => JSON.parse(await response.json()))
         .then((data) => {
             return data;
@@ -12,8 +12,8 @@ export async function getAllData(): Promise<MultipleRecords> {
         });
 }
 
-export async function getPatientData(studyInstanceUid): Promise<SingleRecord>{
-    return fetch('http://localhost:8000/getPatientData?studyInstanceUid=' + studyInstanceUid, { mode: 'cors', headers: {"Cross-Origin-Resource-Policy": "cross-origin"}})
+export async function getPatientData(mrn): Promise<SingleRecord>{
+    return fetch('http://localhost:8000/getPatientData?mrn=' + mrn, { mode: 'cors', headers: {"Cross-Origin-Resource-Policy": "cross-origin"}})
         .then(async (response) => JSON.parse(await response.json()))
         .then((data) => {
             return data;

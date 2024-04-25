@@ -254,6 +254,7 @@ function WorkList({
       date,
       time,
     } = study;
+    console.warn("MRN: " + mrn, "Name: " + patientName) // TODO REMOVE
     const studyDate =
       date &&
       moment(date, ['YYYYMMDD', 'YYYY.MM.DD'], true).isValid() &&
@@ -363,7 +364,7 @@ function WorkList({
                       name={'launch-arrow'}
                   />
                 } // launch-arrow | launch-info
-                onClick={() => {navigate('/doctor-helper', { replace: true , state: {studyInstanceUid: studyInstanceUid}});}}
+                onClick={() => {navigate('/doctor-helper', { replace: true , state: {mrn: mrn}});}}
                 className={'text-[13px]'}
             >
               {"Doctor helper"}

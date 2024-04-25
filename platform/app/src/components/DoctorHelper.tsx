@@ -26,10 +26,10 @@ const DoctorHelper: React.FC = (props) => {
                 {"Home"}
             </Button>
             <div>
-                <ScatterChart studyInstanceUid={state.studyInstanceUid}/>
+                <ScatterChart mrn={state.mrn}/>
             </div>
             <div>
-                <AreaChart studyInstanceUid={state.studyInstanceUid}/>
+                <AreaChart mrn={state.mrn}/>
             </div>
         </div>
     );
