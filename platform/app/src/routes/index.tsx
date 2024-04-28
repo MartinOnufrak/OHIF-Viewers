@@ -12,7 +12,11 @@ import buildModeRoutes from './buildModeRoutes';
 import PrivateRoute from './PrivateRoute';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import DoctorHelper from "../components/DoctorHelper";
+import DoctorHelper from '../components/DoctorHelper';
+import Dataset from '../components/Dataset';
+import PatientsPage from '../components/PatientsPage';
+import MainPage from '../components/MainPage';
+import Procedure from "../components/Procedure";
 
 const NotFoundServer = ({
   message = 'Unable to query for studies at this time. Check your data source configuration or network connection',
@@ -163,8 +167,29 @@ const createRoutes = ({
           />
         );
       })}
-      <Route path="/doctor-helper" element={<DoctorHelper />}/>
+      <Route
+        path="/doctor-helper"
+        element={<DoctorHelper />}
+      />
+      {/* eslint-disable-next-line react/jsx-no-undef */}
+      <Route
+        path="/Dataset"
+        element={<Dataset />}
+      />
+      <Route
+        path="/PatientsPage"
+        element={<PatientsPage />}
+      />
+      <Route
+        path="/MainPage"
+        element={<MainPage />}
+      />
+      <Route
+        path="/Procedure"
+        element={<Procedure />}
+      />
     </Routes>
+
   );
 };
 
