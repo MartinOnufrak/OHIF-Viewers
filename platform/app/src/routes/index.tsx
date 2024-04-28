@@ -16,7 +16,8 @@ import DoctorHelper from '../components/DoctorHelper';
 import Dataset from '../components/Dataset';
 import PatientsPage from '../components/PatientsPage';
 import MainPage from '../components/MainPage';
-import Procedure from "../components/Procedure";
+import Procedure from '../components/Procedure';
+import PatientInfo from '../components/PatientInfo';
 
 const NotFoundServer = ({
   message = 'Unable to query for studies at this time. Check your data source configuration or network connection',
@@ -188,8 +189,11 @@ const createRoutes = ({
         path="/Procedure"
         element={<Procedure />}
       />
+      <Route
+        path="/PatientInfo"
+        element={<PatientInfo />}
+      />
     </Routes>
-
   );
 };
 
