@@ -3,7 +3,8 @@ import AreaChart from './Charts/AreaChart';
 import ScatterChart from './Charts/ScatterChart';
 import { useLocation } from 'react-router';
 import { useNavigate } from 'react-router-dom';
-import { useModal } from '@ohif/ui';
+import { AboutModal, useModal } from "@ohif/ui";
+import {getPatientPrediction} from "../utils/apiConnectors";
 import { useTranslation } from 'react-i18next';
 import { useAppConfig } from '@state';
 import {
@@ -46,7 +47,7 @@ const ChartPage: React.FC = (props) => {
     });
   }
 
-  const answer = 3;
+  const answer = getPatientPrediction(state.patientHash);
 
   let conditionalContent;
   switch (answer) {

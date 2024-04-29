@@ -8,7 +8,6 @@ import appConfig, { useAppConfig } from '../state/appConfig';
 const MainPage: React.FC = props => {
   const { state } = useLocation();
   const navigate = useNavigate();
-
   const { t } = useTranslation();
   const { show, hide } = useModal();
   const [appConfig] = useAppConfig();
