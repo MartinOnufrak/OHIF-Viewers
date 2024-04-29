@@ -39,7 +39,7 @@ const MainPage: React.FC = (props) => {
               name="launch-arrow"
             />
           }
-          onClick={() => {navigate('/Charts', { replace: true , state: {state}});}}
+          onClick={() => {navigate('/Charts', { replace: true , state: state});}}
           className="text-[13px]"
         >
           Charts

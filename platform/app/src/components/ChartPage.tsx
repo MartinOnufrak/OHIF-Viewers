@@ -107,7 +107,7 @@ const ChartPage: React.FC = (props) => {
       </Button>
         <div className={'chartContainer'}>
           <div className={'chart'}>
-            <ScatterChart mrn={state.mrn} />
+            <ScatterChart patientHash={state.patientHash} />
           </div>
             <div className={'description'}>
                 Visualisation by patients' right ventricular end-systolic-volume and end-diastolic-volume with filtering based on calculated ejection fraction.
@@ -118,7 +118,7 @@ const ChartPage: React.FC = (props) => {
                 Distribution of patients by their right ventricular ejection fraction.
             </div>
             <div className={'chart'}>
-                <AreaChart mrn={state.mrn} />
+                <AreaChart patientHash={state.patientHash} />
             </div>
         </div>
     </div>
