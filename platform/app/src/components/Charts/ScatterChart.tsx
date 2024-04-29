@@ -38,7 +38,7 @@ const ScatterChart: React.FC = ({mrn}) => {
         xAxis: {
             axisPointer: {},
             scale: false,
-            name: 'RVEDV',
+            name: 'EDV',
             splitLine: {
                 lineStyle: {
                     color: SILVER_OPAQUE,
@@ -53,7 +53,7 @@ const ScatterChart: React.FC = ({mrn}) => {
         },
         yAxis: {
             scale: false,
-            name: 'RVESV',
+            name: 'ESV',
             splitLine: {
                 lineStyle: {
                     color: SILVER_OPAQUE,
@@ -91,9 +91,9 @@ const ScatterChart: React.FC = ({mrn}) => {
                 max: 100,
                 range: [0, 100],
                 orient: 'vertical',
-                right: 20,
+                right: 15,
                 top: 'center',
-                text: ['RVEF'],
+                text: ['EF'],
                 calculable: true,
                 inRange: {
                     color: [
@@ -114,19 +114,19 @@ const ScatterChart: React.FC = ({mrn}) => {
         ],
         series: [
             {
-                name: 'Chorí',
+                name: 'Sick',
                 color: RED,
                 type: 'scatter',
                 data: parsedData.ill
             },
             {
-                name: 'Zdraví',
+                name: 'Healthy',
                 color: 'green',
                 type: 'scatter',
                 data: parsedData.healthy
             },
             {
-                name: 'Pacient',
+                name: 'Patient',
 
                 type: 'effectScatter',
                 symbolSize: 15,

@@ -69,9 +69,9 @@ export const DEFAULT_CHART_OPTIONS = {
             backgroundColor: 'rgba(47,69,84,0)',
             //fillerColor: 'rgba(47,69,84,0.25)',
             borderColor: '#d2dbee',
-            width: '1%',
+            width: '1.3%',
             yAxisIndex: [0],
-            left: '5.5%'
+            left: '4.25%'
         }
     ],
     toolbox: {

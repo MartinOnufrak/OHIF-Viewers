@@ -98,7 +98,7 @@ const AreaChart: React.FC = ({mrn}) => {
         },
 
         xAxis: {
-            name: 'Vzorky',
+            name: 'Records',
             type: 'category',
             categories: [1],
             lineStyle: {
@@ -125,7 +125,7 @@ const AreaChart: React.FC = ({mrn}) => {
             }
         },
         yAxis: {
-            name: 'RVEF',
+            name: 'EF',
             type: 'value',
             axisPointer: {
                 show: false,
@@ -144,7 +144,7 @@ const AreaChart: React.FC = ({mrn}) => {
         },
         series: [
             {
-                name: 'Chorí',
+                name: 'Sick',
                 stack: 'DEFAULT',
                 data: parsedData.insuffiecient,
                 type: 'bar',
@@ -153,7 +153,7 @@ const AreaChart: React.FC = ({mrn}) => {
                 barCategoryGap: '0%'
             },
             {
-                name: 'Zdraví',
+                name: 'Healthy',
                 stack: 'DEFAULT',
                 data: parsedData.healthy,
                 type: 'bar',
@@ -161,7 +161,7 @@ const AreaChart: React.FC = ({mrn}) => {
                 barCategoryGap: '0%'
             },
             {
-                name: 'Chorí',
+                name: 'Sick',
                 stack: 'DEFAULT',
                 data: parsedData.excessive,
                 type: 'bar',
@@ -169,7 +169,7 @@ const AreaChart: React.FC = ({mrn}) => {
                 barCategoryGap: '0%'
             },
             {
-                name: 'Pacient',
+                name: 'Patient',
                 stack: 'DEFAULT',
                 data: parsedData.patient,
                 type: 'bar',

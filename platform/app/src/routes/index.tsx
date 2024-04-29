@@ -12,7 +12,7 @@ import buildModeRoutes from './buildModeRoutes';
 import PrivateRoute from './PrivateRoute';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import DoctorHelper from '../components/DoctorHelper';
+import ChartsPage from '../components/ChartsPage';
 import Dataset from '../components/Dataset';
 import PatientsPage from '../components/PatientsPage';
 import MainPage from '../components/MainPage';
@@ -169,8 +169,8 @@ const createRoutes = ({
         );
       })}
       <Route
-        path="/doctor-helper"
-        element={<DoctorHelper />}
+        path="/Charts"
+        element={<ChartsPage />}
       />
       {/* eslint-disable-next-line react/jsx-no-undef */}
       <Route

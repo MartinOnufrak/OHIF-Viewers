@@ -1,0 +1,23 @@
+div.chart {
+    width: 80%;
+}
+
+div.description {
+    color: #e7e7e7;
+    width: 20%;
+    background-color: #001636;
+    padding: 1%;
+    font-size: 0.85em;
+    display: block;
+    font-weight: bold;
+}
+
+div.chartContainer {
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+    margin-left: 2%;
+    margin-right: 2%;
+    display: flex;
+    align-items: center;
+    gap: 2%;
+}
