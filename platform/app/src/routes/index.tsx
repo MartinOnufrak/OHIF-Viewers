@@ -12,7 +12,7 @@ import buildModeRoutes from './buildModeRoutes';
 import PrivateRoute from './PrivateRoute';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import ChartsPage from '../components/ChartsPage';
+import ChartPage from '../components/ChartPage';
 import Dataset from '../components/Dataset';
 import PatientsPage from '../components/PatientsPage';
 import MainPage from '../components/MainPage';
@@ -170,7 +170,7 @@ const createRoutes = ({
       })}
       <Route
         path="/Charts"
-        element={<ChartsPage />}
+        element={<ChartPage />}
       />
       {/* eslint-disable-next-line react/jsx-no-undef */}
       <Route

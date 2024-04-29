@@ -49,7 +49,7 @@ const { availableLanguages, defaultLanguage, currentLanguage } = i18n;
 
 const seriesInStudiesMap = new Map();
 
-const ChartsPage: React.FC = (props) => {
+const ChartPage: React.FC = (props) => {
   const { state } = useLocation();
   const navigate = useNavigate();
     const { show, hide } = useModal();
@@ -125,4 +125,4 @@ const ChartsPage: React.FC = (props) => {
   );
 };
 
-export default ChartsPage;
+export default ChartPage;
