@@ -364,7 +364,7 @@ function WorkList({
                       name={'launch-arrow'}
                   />
                 } // launch-arrow | launch-info
-                onClick={() => {navigate('/MainPage', { replace: true , state: {mrn: mrn}});}}
+                onClick={() => {navigate('/MainPage', { replace: true , state: {patientHash: patientName}});}}
                 className={'text-[13px]'}
             >
               {"Doctor helper"}

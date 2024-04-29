@@ -50,7 +50,7 @@ const MainPage: React.FC = props => {
       <div
         style={{
           position: 'absolute',
-          top: '80px',
+          top: '100px',
           left: '100px',
           fontSize: '40px',
           fontWeight: 'bold',
