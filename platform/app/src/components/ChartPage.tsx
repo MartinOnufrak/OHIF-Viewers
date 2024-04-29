@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import AreaChart from './Charts/AreaChart';
 import ScatterChart from './Charts/ScatterChart';
 import { useLocation } from 'react-router';
@@ -47,6 +47,7 @@ const ChartPage: React.FC = (props) => {
     });
   }
 
+  // TODO use useEffect, await and useState
   const answer = getPatientPrediction(state.patientHash);
 
   let conditionalContent;

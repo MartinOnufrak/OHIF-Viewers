@@ -25,9 +25,10 @@ export async function getPatientData(patientHash): Promise<SingleRecord>{
 }
 
 export async function getPatientPrediction(patientHash): Promise<number>{
-    return fetch('http://localhost:8000/getPatientPrediction?mrn=' + patientHash, { mode: 'cors', headers: {"Cross-Origin-Resource-Policy": "cross-origin"}})
+    return fetch('http://localhost:8000/getPatientPrediction?patientHash=' + patientHash, { mode: 'cors', headers: {"Cross-Origin-Resource-Policy": "cross-origin"}})
         .then(async (response) => JSON.parse(await response.json()))
         .then((data) => {
+            console.warn(data.patientPrediction)
             return data.patientPrediction;
         })
         .catch((err) => {

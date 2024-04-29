@@ -107,7 +107,7 @@ const MainPage: React.FC = props => {
               alt="Image 2"
               style={{ height: '300px', width: '300px' }}
               onClick={() => {
-                navigate('/Charts', { replace: true, state: { state } });
+                navigate('/Charts', { replace: true, state: state });
               }}
             />
             <span style={{ marginTop: '50px', fontSize: '23px', color: 'white' }}>Graphs & recommendation</span>
