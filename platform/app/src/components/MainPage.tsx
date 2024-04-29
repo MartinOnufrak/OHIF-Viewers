@@ -1,21 +1,56 @@
 import React from 'react';
-import AreaChart from './Charts/AreaChart';
-import ScatterChart from './Charts/ScatterChart';
 import { useLocation } from 'react-router';
-import { Button, Icon } from '@ohif/ui';
 import { useNavigate } from 'react-router-dom';
+import { AboutModal, Button, Header, Icon, useModal } from '@ohif/ui';
+import { useTranslation } from 'react-i18next';
+import appConfig, { useAppConfig } from '../state/appConfig';
 
-const MainPage: React.FC = (props) => {
+const MainPage: React.FC = props => {
   const { state } = useLocation();
   const navigate = useNavigate();
 
+  const { t } = useTranslation();
+  const { show, hide } = useModal();
+  const [appConfig] = useAppConfig();
+  const versionNumber = process.env.VERSION_NUMBER;
+  const commitHash = process.env.COMMIT_HASH;
+
+  const menuOptions = [
+    {
+      title: t('Header:About'),
+      icon: 'info',
+      onClick: () =>
+        show({
+          content: AboutModal,
+          title: t('AboutModal:About OHIF Viewer'),
+          contentProps: { versionNumber, commitHash },
+        }),
+    },
+  ];
+
+  if (appConfig.oidc) {
+    menuOptions.push({
+      icon: 'power-off',
+      title: t('Header:Logout'),
+      onClick: () => {
+        navigate(`/logout?redirect_uri=${encodeURIComponent(window.location.href)}`);
+      },
+    });
+  }
+
   return (
     <div style={{ height: '100vh', position: 'relative' }}>
+      <Header
+        isSticky
+        menuOptions={menuOptions}
+        isReturnEnabled={false}
+        WhiteLabeling={appConfig.whiteLabeling}
+      />
       {/* Title positioned at top-left with custom spacing and white font color */}
       <div
         style={{
           position: 'absolute',
-          top: '100px',
+          top: '80px',
           left: '100px',
           fontSize: '40px',
           fontWeight: 'bold',
@@ -24,28 +59,6 @@ const MainPage: React.FC = (props) => {
       >
         Heart USG
       </div>
-
-      <div
-        style={{
-          position: 'absolute',
-          top: '80px', // Adjusted to create some space from the top
-          right: '80px', // Adjusted to create some space from the right
-        }}
-      >
-        <Button
-          startIcon={
-            <Icon
-              className="!h-[20px] !w-[20px] text-black"
-              name="launch-arrow"
-            />
-          }
-          onClick={() => {navigate('/Charts', { replace: true , state: {state}});}}
-          className="text-[13px]"
-        >
-          Charts
-        </Button>
-      </div>
-
       {/* Main content, vertically and horizontally centered */}
       <div
         style={{
@@ -56,7 +69,6 @@ const MainPage: React.FC = (props) => {
           height: '100%',
         }}
       >
-
         {/* Container for 3 clickable images with text below and 10px spacing */}
         <div style={{ display: 'flex', justifyContent: 'center', gap: '40px', marginTop: '20px' }}>
           {/* First clickable image */}
@@ -86,6 +98,7 @@ const MainPage: React.FC = (props) => {
               flexDirection: 'column',
               alignItems: 'center',
               cursor: 'pointer',
+              paddingLeft: '40px',
             }}
             onClick={() => console.log('Image 2 clicked')}
           >
@@ -94,9 +107,11 @@ const MainPage: React.FC = (props) => {
               src="/assets/pictures/2.png"
               alt="Image 2"
               style={{ height: '300px', width: '300px' }}
-              onClick={() => navigate('/PatientsPage', { replace: true })}
+              onClick={() => {
+                navigate('/Charts', { replace: true, state: { state } });
+              }}
             />
-            <span style={{ marginTop: '50px', fontSize: '23px', color: 'white' }}>Patients</span>
+            <span style={{ marginTop: '50px', fontSize: '23px', color: 'white' }}>Graphs & recommendation</span>
           </div>
 
           {/* Third clickable image */}
@@ -112,7 +127,7 @@ const MainPage: React.FC = (props) => {
             <img
               src="/assets/pictures/3.png"
               alt="Image 3"
-              style={{ height: '300px', width: '300px' }}
+              style={{ height: '300px', width: '300px', paddingLeft: '40px' }}
               onClick={() => navigate('/Procedure', { replace: true })}
             />
             <span style={{ marginTop: '50px', fontSize: '23px', color: 'white' }}>Procedure</span>

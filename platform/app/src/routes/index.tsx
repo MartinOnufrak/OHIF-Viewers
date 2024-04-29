@@ -14,10 +14,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ChartPage from '../components/ChartPage';
 import Dataset from '../components/Dataset';
-import PatientsPage from '../components/PatientsPage';
 import MainPage from '../components/MainPage';
 import Procedure from '../components/Procedure';
-import PatientInfo from '../components/PatientInfo';
 
 const NotFoundServer = ({
   message = 'Unable to query for studies at this time. Check your data source configuration or network connection',
@@ -178,10 +176,6 @@ const createRoutes = ({
         element={<Dataset />}
       />
       <Route
-        path="/PatientsPage"
-        element={<PatientsPage />}
-      />
-      <Route
         path="/MainPage"
         element={<MainPage />}
       />
@@ -189,10 +183,7 @@ const createRoutes = ({
         path="/Procedure"
         element={<Procedure />}
       />
-      <Route
-        path="/PatientInfo"
-        element={<PatientInfo />}
-      />
+
     </Routes>
   );
 };

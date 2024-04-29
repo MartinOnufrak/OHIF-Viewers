@@ -38,27 +38,30 @@ const Dataset: React.FC = () => {
 
   return (
     <div style={{ height: '100vh', position: 'relative' }}>
-        <Header
-            isSticky
-            menuOptions={menuOptions}
-            isReturnEnabled={false}
-            WhiteLabeling={appConfig.whiteLabeling}
-        />
+      <Header
+        isSticky
+        menuOptions={menuOptions}
+        isReturnEnabled={false}
+        WhiteLabeling={appConfig.whiteLabeling}
+      />
 
+      <div
+        style={{
+          position: 'absolute',
+          top: '80px', // 20px below the header
+          right: '100px', // 100px from the right edge
+        }}
+      >
         <Button
-            isabled={false}
-            startIconTooltip={null}
-            startIcon={
-                <Icon
-                    className="!h-[20px] !w-[20px] text-black"
-                    name="launch-arrow"
-                />
-            }
-            onClick={() => navigate('/MainPage', { replace: true })}
-            className="text-[13px]"
+          isDisabled={false}
+          startIconTooltip={null}
+          startIcon={<Icon className="!h-[20px] !w-[20px] text-black" name="launch-arrow" />}
+          onClick={() => navigate('/MainPage', { replace: true })}
+          className="text-[13px]"
         >
-            Home
+          Home
         </Button>
+      </div>
 
       {/* Title positioned at top-left with custom spacing and white font color */}
       <div
@@ -109,7 +112,7 @@ const Dataset: React.FC = () => {
           >
             {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
             <img
-              src="/assets/pictures/1.png"
+              src="/assets/pictures/dset.png"
               alt="Image 1"
               style={{ height: '300px', width: '300px' }}
             />
