@@ -102,7 +102,7 @@ const ChartPage: React.FC = (props) => {
           isDisabled={false}
           startIconTooltip={null}
           startIcon={<Icon className="!h-[20px] !w-[20px] text-black" name="launch-arrow" />}
-          onClick={() => navigate('/MainPage', { replace: true })}
+          onClick={() => navigate('/MainPage', { replace: true, state: state })}
           className="text-[13px]"
         >
           Home

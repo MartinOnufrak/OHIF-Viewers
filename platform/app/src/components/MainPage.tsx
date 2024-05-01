@@ -57,7 +57,7 @@ const MainPage: React.FC = props => {
                 isDisabled={false}
                 startIconTooltip={null}
                 startIcon={<Icon className="!h-[20px] !w-[20px] text-black" name="launch-arrow" />}
-                onClick={() => navigate('/', { replace: true })}
+                onClick={() => navigate('/', { replace: true, state: state })}
                 className="text-[13px]"
             >
                 Home
@@ -103,7 +103,7 @@ const MainPage: React.FC = props => {
               src="/assets/pictures/1.png"
               alt="Image 1"
               style={{ height: '300px', width: '300px' }}
-              onClick={() => navigate('/Dataset', { replace: true })}
+              onClick={() => navigate('/Dataset', { replace: true, state: state })}
             />
             <span style={{ marginTop: '50px', fontSize: '23px', color: 'white' }}>Dataset</span>
           </div>
@@ -145,7 +145,7 @@ const MainPage: React.FC = props => {
               src="/assets/pictures/3.png"
               alt="Image 3"
               style={{ height: '300px', width: '300px', paddingLeft: '40px' }}
-              onClick={() => navigate('/Procedure', { replace: true })}
+              onClick={() => navigate('/Procedure', { replace: true, state: state })}
             />
             <span style={{ marginTop: '50px', fontSize: '23px', color: 'white' }}>Procedure</span>
           </div>

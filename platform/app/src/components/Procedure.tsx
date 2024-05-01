@@ -3,9 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import {AboutModal, Button, Header, Icon, useModal} from '@ohif/ui';
 import {useTranslation} from "react-i18next";
 import appConfig, {useAppConfig} from "../state/appConfig";
-import './Styles/ChartsPage.css'; // Import the CSS file
+import './Styles/ChartsPage.css';
+import {useLocation} from "react-router"; // Import the CSS file
 
 const Procedure: React.FC = () => {
+    const { state } = useLocation();
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { show, hide } = useModal();
@@ -58,7 +60,7 @@ const Procedure: React.FC = () => {
           isDisabled={false}
           startIconTooltip={null}
           startIcon={<Icon className="!h-[20px] !w-[20px] text-black" name="launch-arrow" />}
-          onClick={() => navigate('/MainPage', { replace: true })}
+          onClick={() => navigate('/MainPage', { replace: true, state: state })}
           className="text-[13px]"
         >
           Home
