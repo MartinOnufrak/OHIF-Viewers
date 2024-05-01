@@ -61,7 +61,7 @@ const Dataset: React.FC = () => {
           onClick={() => navigate('/MainPage', { replace: true, state: state})}
           className="text-[13px]"
         >
-          Home
+            Back
         </Button>
       </div>
 

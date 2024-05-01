@@ -13,7 +13,7 @@ export async function getAllData(): Promise<MultipleRecords> {
 }
 
 export async function getPatientData(patientHash): Promise<SingleRecord>{
-    return fetch('http://localhost:8000/getPatientData?patientHash=' + patientHash, { mode: 'cors', headers: {"Cross-Origin-Resource-Policy": "cross-origin"}})
+    return fetch('http://localhost:8000/getPatientData?hash=' + patientHash, { mode: 'cors', headers: {"Cross-Origin-Resource-Policy": "cross-origin"}})
         .then(async (response) => JSON.parse(await response.json()))
         .then((data) => {
             return data;
@@ -25,7 +25,7 @@ export async function getPatientData(patientHash): Promise<SingleRecord>{
 }
 
 export async function getPatientPrediction(patientHash): Promise<number>{
-    return fetch('http://localhost:8000/getPatientPrediction?patientHash=' + patientHash, { mode: 'cors', headers: {"Cross-Origin-Resource-Policy": "cross-origin"}})
+    return fetch('http://localhost:8000/getPatientPrediction?hash=' + patientHash, { mode: 'cors', headers: {"Cross-Origin-Resource-Policy": "cross-origin"}})
         .then(async (response) => JSON.parse(await response.json()))
         .then((data) => {
             console.warn(data.patientPrediction)

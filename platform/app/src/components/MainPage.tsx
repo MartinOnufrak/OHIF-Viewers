@@ -60,7 +60,7 @@ const MainPage: React.FC = props => {
                 onClick={() => navigate('/', { replace: true, state: state })}
                 className="text-[13px]"
             >
-                Home
+                Back
             </Button>
         </div>
       {/* Title positioned at top-left with custom spacing and white font color */}
