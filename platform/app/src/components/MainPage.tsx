@@ -13,6 +13,7 @@ const MainPage: React.FC = props => {
   const [appConfig] = useAppConfig();
   const versionNumber = process.env.VERSION_NUMBER;
   const commitHash = process.env.COMMIT_HASH;
+  console.warn(state);
 
   const menuOptions = [
     {
@@ -45,6 +46,23 @@ const MainPage: React.FC = props => {
         isReturnEnabled={false}
         WhiteLabeling={appConfig.whiteLabeling}
       />
+        <div
+            style={{
+                position: 'absolute',
+                top: '80px',
+                right: '100px',
+            }}
+        >
+            <Button
+                isDisabled={false}
+                startIconTooltip={null}
+                startIcon={<Icon className="!h-[20px] !w-[20px] text-black" name="launch-arrow" />}
+                onClick={() => navigate('/', { replace: true })}
+                className="text-[13px]"
+            >
+                Home
+            </Button>
+        </div>
       {/* Title positioned at top-left with custom spacing and white font color */}
       <div
         style={{

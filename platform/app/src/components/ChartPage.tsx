@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import AreaChart from './Charts/AreaChart';
 import ScatterChart from './Charts/ScatterChart';
 import { useLocation } from 'react-router';
@@ -47,24 +47,28 @@ const ChartPage: React.FC = (props) => {
     });
   }
 
-  // TODO use useEffect, await and useState
-  const answer = getPatientPrediction(state.patientHash);
+  const [conditionalContent, setConditionalContent] = useState('Recommended action: No specific answer provided.');
+    // @ts-ignore
+    useEffect(async () => {
+        const answer = await getPatientPrediction(state.patientHash);
 
-  let conditionalContent;
-  switch (answer) {
-    case 1:
-      conditionalContent = 'Recommended action: Patient is healthy, no additional interference needed.';
-      break;
-    case 2:
-      conditionalContent = 'Recommended action: Patient is in a risk group, need more investigation for cause, regular monitoring recommended.';
-      break;
-    case 3:
-      conditionalContent = 'Recommended action: Patient is in a critical state. Immediate intervention needed.';
-      break;
-    default:
-      conditionalContent = 'Recommended action: No specific answer provided.';
-      break;
-  }
+        switch (answer) {
+            case 1:
+                setConditionalContent('Recommended action: Patient is healthy, no additional interference needed.');
+                break;
+            case 2:
+                setConditionalContent('Recommended action: Patient is in a risk group, need more investigation for cause, regular monitoring recommended.');
+                break;
+            case 3:
+                setConditionalContent('Recommended action: Patient is in a critical state. Immediate intervention needed.');
+                break;
+            default:
+                setConditionalContent('Recommended action: No specific answer provided.');
+                break;
+        }
+    }, []);
+
+    console.warn(state);
 
   return (
     <div>
