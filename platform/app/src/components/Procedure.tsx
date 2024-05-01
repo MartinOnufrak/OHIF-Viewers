@@ -88,7 +88,7 @@ const Procedure: React.FC = () => {
       </div>
       <div style={{
         position: 'absolute',
-        top: '270px',
+        top: '275px',
         right: '80px', // Adjusted to create some space from the right
       }}>
         <img
@@ -100,6 +100,7 @@ const Procedure: React.FC = () => {
           }}
         />
       </div>
+
       <div style={{
         position: 'absolute',
         top: '620px',
@@ -133,6 +134,7 @@ const Procedure: React.FC = () => {
 
         {/*Empty line */}
         <p>&nbsp;</p>
+          <p>&nbsp;</p>
 
         <ul>
           <li>Before the echocardiogram begins, a healthcare provider or technologist will review your medical history,
