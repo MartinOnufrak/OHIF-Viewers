@@ -59,6 +59,7 @@ ENV QUICK_BUILD true
 # ENV REACT_APP_CONFIG=config/default.js
 
 RUN yarn run build
+# CMD ["yarn", "run", "dev:orthanc;"]
 
 # Stage 3: Bundle the built application into a Docker container
 # which runs Nginx using Alpine Linux
