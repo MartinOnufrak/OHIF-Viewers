@@ -43,3 +43,11 @@ services:
       # Persist data
       - ./volumes/orthanc-db/:/var/lib/orthanc/db/
     restart: unless-stopped
+
+  fastapi:
+    build:
+      context: ../../../../MaPS_Backend
+      dockerfile: Dockerfile
+    container_name: MaPS_Backend
+    ports:
+      - "8000:3000"
