@@ -17,6 +17,14 @@
   EDV ∗ 100, where EF is ejection fraction, EDV is ventricular blood volume
   before contraction, and ESV is the volume of blood in the ventricle after contraction.
 
+<h2> Architecture </h2>
+
+<p>The application will have a client-server architecture with a centralized server, on
+hosting the Orthanc DICOM server, integration of the OHIF browser
+Viewer and a Python API. Clients will communicate with the server
+via web interfaces to view medical images, access
+access technical documentation and perform model evaluations.
+
 <h2> Setup of project </h2>
 
 <h3> Clone the repositary </h3>
